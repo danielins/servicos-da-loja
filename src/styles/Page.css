@@ -1,0 +1,56 @@
+.Page {
+    background: #095ba5;
+
+    position: relative;
+}
+
+.Page-deco {
+    position: absolute;
+    width: 0; height: 0;
+    transition: all 1s ease-in-out;
+}
+
+/* Decoration shapes */
+.Page-deco.is-top { top: 0; }
+.Page-deco.is-bottom { bottom: 0; }
+.Page-deco.is-left { left: 0; }
+.Page-deco.is-right { right: 0; }
+
+
+/* Decoration positions */
+.Page-deco.is-top.is-left {
+    border-top: 307.2px solid #fff;
+    border-right: 307.2px solid transparent;
+    z-index: 1;
+}
+.Page-deco.is-top.is-right {
+    border-top: 307.2px solid #fff;
+    border-left: 307.2px solid transparent;
+}
+.Page-deco.is-bottom.is-left {
+    border-bottom: 614.4px solid #fff;
+    border-right: 614.4px solid transparent;
+}
+.Page-deco.is-bottom.is-right {
+    background: #fff;
+    width: 614.4px; height: 914.4px;
+    transform: rotate(-45deg);
+
+    bottom: -20%; right: -20%;
+}
+
+.Page-content {
+    border: 1px solid white;
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 10em;
+}
+
+.Page-deco__logo {
+    width: 50%; height: auto;
+    position: absolute;
+    top: 25%; left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
