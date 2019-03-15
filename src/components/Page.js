@@ -1,47 +1,84 @@
 import React, { Component } from 'react';
+import  { 
+    BrowserRouter as Router,
+    Route,
+    Link
+} from 'react-router-dom';
 import '../styles/Page.css';
 import logo from '../images/logo.png';
+
+const Home = props => (
+    <h1>
+        Serviços das Lojas
+    </h1>
+);
+
+const Carregadores = props => (
+    <h1>
+        Carregadores de Celular e WiFi
+    </h1>
+);
+
+const routes = [
+    { path: '/', name: 'Home', Component: Home },
+    { path: '/carregadores', name: 'Carregadores de Celular e WiFi', Component: Carregadores }
+];
+
 
 class Page extends Component {
 
     transitionStart(){
-        let deco = document.querySelectorAll('.Page-deco.is-top.is-left')[0];
-        let width = window.innerWidth*2;
-        deco.style.borderTop = `${ width }px solid #52bfdb`;
-        deco.style.borderRight = `${ width }px solid transparent`;
+        let deco = document.querySelectorAll('.Page-deco.is-bottom.is-right')[0];
+        let width = window.innerHeight*2;
+        deco.style.borderBottom = `${ width }px solid #fff`;
+        deco.style.borderLeft = `${ width }px solid transparent`;
     }
 
     transitionEnd(){
-        let deco = document.querySelectorAll('.Page-deco.is-top.is-left')[0];
-        deco.style.borderTop = `100px solid #fff`;
-        deco.style.borderRight = `100px solid transparent`;
+        let deco = document.querySelectorAll('.Page-deco.is-bottom.is-right')[0];
+        deco.style.borderBottom = `307.2px solid #fff`;
+        deco.style.borderLeft = `307.2px solid transparent`;
     }
 
     componentDidMount(){
         // setInterval(() => {
         //     this.transitionStart();
-        //     setTimeout(this.transitionEnd, 1000);
+        //     setTimeout(this.transitionEnd, 3000);
         // }, 5000);
     }
 
     render(){
 
         return (
-            <div className="Page">
+            <Router>
+                <div className="Page">
 
-                <div className="Page-deco is-top is-left"></div>
-                <div className="Page-deco is-top is-right"></div>
+                    <div className="Page-background"></div>
 
-                <div className="Page-content">
-                    1024x1366
+                    <div className="Page-content">
+                        <ul>
+                        {
+                            routes.map(route => (
+                                <li>
+                                    <Link key={route.path} to={ route.path } className="Page-link">
+                                        { route.name }
+                                    </Link>
+                                </li>
+                            ))
+                        }
+                        </ul>
+                        {
+                            routes.map(({ path, Component }) => (
+                                <Route key={path} exact path={ path } component={ Component } />
+                            ))
+                        }
+                    </div>
+
+                    <div className="Page-deco is-bottom is-right"></div>
+                    <img src={logo} className="Page-deco__logo" alt="Carrefour" title="Carrefour" />
+
                 </div>
-
-                <div className="Page-deco is-bottom is-right">
-                    <img src={logo} className="Page-deco__logo" alt="Carrefour" title="Carrefour" />    
-                </div>
-                <div className="Page-deco is-bottom is-left"></div>
-
-            </div>
+            </Router>
         );
 
     }

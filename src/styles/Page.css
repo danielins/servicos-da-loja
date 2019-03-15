@@ -1,8 +1,31 @@
 .Page {
-    background: #095ba5;
-
+    background: #333;
     position: relative;
 }
+
+.Page-background {
+    background: url('https://static1.squarespace.com/static/5709c194e321403c55496d30/578f13aa414fb579e9fa8656/5a83959b08522971783e3a96/1530054277888/shutterstock_590873999.jpg?format=2500w') no-repeat center center;
+
+    opacity: 0.5;
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    width: 100%; height: 100%;
+    animation: Background 120s ease infinite;
+}
+
+@-webkit-keyframes Background {
+    0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
 
 .Page-deco {
     position: absolute;
@@ -22,35 +45,40 @@
     border-top: 307.2px solid #fff;
     border-right: 307.2px solid transparent;
     z-index: 1;
+
+    display: none;
 }
 .Page-deco.is-top.is-right {
     border-top: 307.2px solid #fff;
     border-left: 307.2px solid transparent;
+
+    display: none;
 }
 .Page-deco.is-bottom.is-left {
-    border-bottom: 614.4px solid #fff;
-    border-right: 614.4px solid transparent;
+    border-bottom: 600px solid #fff;
+    border-right: 600px solid transparent;
 }
 .Page-deco.is-bottom.is-right {
-    background: #fff;
-    width: 614.4px; height: 914.4px;
-    transform: rotate(-45deg);
-
-    bottom: -20%; right: -20%;
+    border-bottom: 307.2px solid #fff;
+    border-left: 307.2px solid transparent;
 }
 
 .Page-content {
     border: 1px solid white;
     position: absolute;
-    top: 30%; left: 50%;
-    transform: translate(-50%, -50%);
+    top: 5%; left: 50%;
+    transform: translateX(-50%);
     color: #fff;
-    font-size: 10em;
+    font-size: 2em;
+}
+
+.Page-link {
+    display: block;
+    color: #fff;
 }
 
 .Page-deco__logo {
-    width: 50%; height: auto;
+    width: 200px; height: auto;
     position: absolute;
-    top: 25%; left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
+    bottom: 0; right: 0;
 }
