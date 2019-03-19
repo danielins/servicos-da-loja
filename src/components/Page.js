@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  { 
-    BrowserRouter as Router,
+    HashRouter as Router,
     Route,
     Link
 } from 'react-router-dom';
@@ -58,6 +58,7 @@ class Page extends Component {
                     <div className="Page-content">
                         <ul>
                         {
+                            // menu
                             routes.map(route => (
                                 <li>
                                     <Link key={route.path} to={ route.path } className="Page-link">
@@ -68,6 +69,7 @@ class Page extends Component {
                         }
                         </ul>
                         {
+                            // componentes
                             routes.map(({ path, Component }) => (
                                 <Route key={path} exact path={ path } component={ Component } />
                             ))
